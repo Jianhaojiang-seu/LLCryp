@@ -1,4 +1,7 @@
 from fetchKeys import fetchPublicKeys
+import math
+import random
+
 class Sender:
     """Represents sender, contains functions to encrypt the message    
     """
@@ -6,7 +9,7 @@ class Sender:
     def encryptMainFile(self, data):
         encryptedMainFile = ""
         return encryptedMainFile
-        
+
     def encryptSessionKey(self, location_info, raw_message):
         """Encrypts the raw_message
 
@@ -34,23 +37,23 @@ class Sender:
         Returns:
             string: encrypted data
         """
-        A, B, moduloNumber = fetchPublicKeys()
-        binaryData = self.getBinaryData()
+        A, B, q = fetchPublicKeys()
+        binaryData = self.getBinaryData(data)
 
         encryptedData = [] # list of (u,v) pairs
         for bit in binaryData:
             # sample numbers from keys
             nvals = len(A)
-            sample= random.sample(range(nvals-1), nvals//4)
+            sample= random.sample(range(nvals - 1), nvals // 4)
             u = 0 
             v = 0
             for x in range(0,len(sample)):
-            	u = u + A[sample[x]
+            	u = u + A[sample[x]]
             	v = v + B[sample[x]]
-            v = v + math.floor(q//2)*message
+            v = v + math.floor(q // 2) * bit
             v = v % q
             u = u % q
-            encryptedData.append((u,v))
+            encryptedData.append((u, v))
         return encryptedData
 
     def getBinaryData(self, data):

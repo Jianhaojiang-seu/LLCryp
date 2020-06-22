@@ -31,11 +31,9 @@ class Receiver:
 
     def LWE_decryption(self, encryptedKey):
         binaryData = []
-        q = self.q
-        s = self.s
         for u,v in encryptedKey:
-            res=(v-s*u) % q
-            binaryData.append(1) if res > q/2 else binaryData.append(0)
+            res = (v - self.s * u) % self.q
+            binaryData.append(1) if res > self.q/2 else binaryData.append(0)
 
         decyptedData = self.binaryToHex(binaryData)
             
@@ -62,10 +60,10 @@ class Receiver:
         e=[]
         self.s = 20
         self.q=97 # modulo number
-        A = random.sample(range(q), nvals)
+        A = random.sample(range(self.q), nvals)
 
         for x in range(0,len(A)):
         	e.append(random.randint(1,4))
-        	B.append((A[x]*s+e[x])%q)
+        	B.append((A[x]* self.s + e[x]) % self.q)
 
-        return (A, B, q)
+        return (A, B, self.q)
