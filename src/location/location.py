@@ -24,7 +24,7 @@ class Location:
         return transformed_location
 
     def getAdjacentQuadrants(self):
-        return self.createAjacentQuadrants(self.transformLocation(self.latitude[0], self.latitude[1]), self.transformLocation(self.latitude[0], self.latitude[1]))
+        return self.createAdjacentQuadrants(self.transformLocation(self.latitude[0], self.latitude[1]), self.transformLocation(self.latitude[0], self.latitude[1]))
 
     def transformLocation(self, location_dir, location_value):
         location_value = location_value * 10000
