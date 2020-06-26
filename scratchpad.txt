@@ -1,0 +1,6 @@
+TODO: 
+1. Understand Project from Yashwant (Today)
+2. Complete GeoLock Function (Today)
+3. Write Dummy for AES
+4. Complete LWE Encryption
+5. Test Results
