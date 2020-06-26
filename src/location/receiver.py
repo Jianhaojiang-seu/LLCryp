@@ -1,30 +1,28 @@
 from location import Location
-from src.lwe.LWE import Lwe
+# from src.lwe.LWE import Lwe
 
 class Receiver:
     """Represents receiver, contains functions to decrypt the cipher
     """
 
-    def decryptData(self, encryptedData, moduloNumber):
-        """
-            1. get session key by decrypting the encryptedKey
-            2. use sessionKey to decrypt the main data file
-        """
-        latitude, longitude, tolerance =  self.getMyLocation()
-        location = Location(latitude, longitude, tolerance)
-        keyInputs = location.getAdjacentQuadrants()
-        decryptionTool = Lwe()
-        for key in keyInputs:
-            result = decryptionTool.LWE_decryption(encryptedData, key, moduloNumber)
-            if result:
-                return result
-            else:
-                return "you are not in the correct location"
+    encrypter = None
 
-    def getMyLocation(self):
-        latitude = ""
-        longitude = ""
-        tolerance = ""
-        return (latitude, longitude, tolerance)
+    def __init__(self, encrypter = None):
+        if encrypter is not None:
+            self.encrypter = encrypter
+
+    def decrypt(self, location_info, decryption_data):
+        """
+        Args:
+            location_info (tuple): Location data containing latitude, longitude & tolerance Distance
+            decryption_data (tuple): Contains Encrypted text & original key-hash as received from sender
+        """
+
+        longitude, latitude, tolerance = location_info[0], location_info[1], location_info[2]
+        location = Location(latitude, longitude, tolerance)
+        encryted_data = decryption_data[0]
+        key = decryption_data[1]
+        # Call the decrypter here & verify results
+
 
 
