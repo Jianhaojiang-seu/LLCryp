@@ -18,23 +18,23 @@ class Location:
         """ Main driver function.
             Gives transformed location to be used in key construction process
         """
-        return [transform_location(self.latitude[0], self.latitude[1]), transform_location(self.latitude[0], self.latitude[1])]
+        return [self.transformLocation(self.latitude[0], self.latitude[1]), self.transformLocation(self.latitude[0], self.latitude[1])]
 
     def getAdjacentQuadrants(self):
-        return createAjacentQuadrants(transform_location(self.latitude[0], self.latitude[1]), transform_location(self.latitude[0], self.latitude[1]))
+        return self.createAdjacentQuadrants(self.transformLocation(self.latitude[0], self.latitude[1]), self.transformLocation(self.latitude[0], self.latitude[1]))
 
-    def transformLocation(location_dir, location_value):
+    def transformLocation(self, location_dir, location_value):
         location_value = location_value * 10000
         if location_dir == "N" or location_dir == "S":
-            return includeLocationSign(location_dir, location_value / (self.tolerance * latitude_coefficient))
+            return self.includeLocationSign(location_dir, location_value / (self.tolerance * latitude_coefficient))
         else: 
-            return includeLocationSign(location_dir, location_value / (self.tolerance * longitude_coefficient))
+            return self.includeLocationSign(location_dir, location_value / (self.tolerance * longitude_coefficient))
 
-    def includeLocationSign(location_dir, location_value):
-        return (location_dir == "N" or location_dir == "W") ? location_value : -1 * location_value
+    def includeLocationSign(self, location_dir, location_value):
+        return location_value if (location_dir == "N" or location_dir == "W") else -1 * location_value
 
 
-    def createAdjacentQuadrants(latitude_val, longitude_val):
+    def createAdjacentQuadrants(self, latitude_val, longitude_val):
         adjacentQuadrants = []  # list containing all the possible quadrants
         directions = [1, -1, 0]
         for x in directions:
