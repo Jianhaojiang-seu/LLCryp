@@ -48,5 +48,3 @@ class Lwe:
     def binaryToHex(self, binaryData):
         decryptedData = []
         return decryptedData
-
-
