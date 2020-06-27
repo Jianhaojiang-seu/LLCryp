@@ -18,20 +18,18 @@ class Location:
         """ Main driver function.
             Gives transformed location to be used in key construction process
         """
-        transformed_location =  [self.transformLocation(self.latitude[0], self.latitude[1]), self.transformLocation(self.latitude[0], self.latitude[1])]
-        transformed_location[0] = round(transformed_location[0], 2)
-        transformed_location[1] = round(transformed_location[1], 2)
+        transformed_location =  [self.transformLocation(self.longitude[0], self.longitude[1]), self.transformLocation(self.latitude[0], self.latitude[1])]
         return transformed_location
 
     def getAdjacentQuadrants(self):
-        return self.createAdjacentQuadrants(self.transformLocation(self.latitude[0], self.latitude[1]), self.transformLocation(self.latitude[0], self.latitude[1]))
+        return self.createAdjacentQuadrants(self.transformLocation(self.longitude[0], self.longitude[1]), self.transformLocation(self.latitude[0], self.latitude[1]))
 
     def transformLocation(self, location_dir, location_value):
         location_value = location_value * 10000
         if location_dir == "N" or location_dir == "S":
-            return self.includeLocationSign(location_dir, location_value / (self.tolerance * latitude_coefficient))
+            return round(self.includeLocationSign(location_dir, location_value / (self.tolerance * latitude_coefficient)), 2)
         else: 
-            return self.includeLocationSign(location_dir, location_value / (self.tolerance * longitude_coefficient))
+            return round(self.includeLocationSign(location_dir, location_value / (self.tolerance * longitude_coefficient)), 2)
 
     def includeLocationSign(self, location_dir, location_value):
         if (location_dir == "N" or location_dir == "W"):

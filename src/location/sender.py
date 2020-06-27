@@ -23,13 +23,8 @@ class Sender:
         Returns:
             string: a list of strings used that are the header columns
         """
-        #  location = Location(latitude, longitude, tolerance)
-        #  secretKey = location.getTransformedLocation()
-        #  encryptionTool = Lwe()
-        #  cipher_text = encryptionTool.LWE_encryption(raw_message, secretKey)
-        #  return cipher_text
         longitude, latitude, tolerance = location_info[0], location_info[1], location_info[2]
         location = Location(longitude, latitude, tolerance)
         transformed_location = location.getTransformedLocation()
-        encrypted_text = self.encrypter.encrypt(transformed_location, raw_message)
-        return encrypted_text
+        encrypted_text, key, iv = self.encrypter.encrypt(transformed_location, raw_message)
+        return encrypted_text, key, iv
