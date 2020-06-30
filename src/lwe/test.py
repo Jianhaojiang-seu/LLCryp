@@ -12,10 +12,10 @@
 from LWE import Lwe
 
 L = Lwe()
-data = '122'
+data = 'bunty is good son'
 secrectKey = 20000.0234352
 encryptedData = L.LWE_encryption(data, secrectKey)
-print(encryptedData)
+# print(encryptedData)
 
 decryptedData = L.LWE_decryption(encryptedData, secrectKey, 97)
 print(decryptedData)
