@@ -15,7 +15,7 @@ if __name__ == "__main__":
     encrypted_text1, key1, iv1 = sender1.encrypt([12, 45, 1], message1)
     print("Encrypted Text (AES):", encrypted_text1, sep=" ", end="\n")
     receiver1 = Receiver('aes', aes_encrypter)
-    decrypted_data1 = receiver1.decrypt([12, 45, 1], [encrypted_text1, key1, iv1])    # BUG: Tolerance Distance factor is not working as expected
+    decrypted_data1 = receiver1.decrypt([12, 78, 1], [encrypted_text1, key1, iv1])    # BUG: Tolerance Distance factor is not working as expected
     if decrypted_data1[0]:
         print("Decrypted Text (AES):", decrypted_data1[1].decode('ascii'), sep=" ", end="\n\n")
     else:

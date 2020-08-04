@@ -158,7 +158,7 @@ class LWE_Encrypter:
         Args:
             q - {int} - Modulo Number
         """
-        if self.generateSecretKey(transformed_location) == original_key:     
+        if self.generateSecretKey(transformed_location) == original_key:
             s = self.generateSecretKey(transformed_location)    # Secret Key
             binary_data = ''
             for u,v in encrypted_data:

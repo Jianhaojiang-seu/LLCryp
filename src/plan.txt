@@ -1,0 +1,33 @@
+1. 
+2.  
+3. What we did
+4. Results
+5.
+
+
+Results:
+1. Anaylysis of strength, 
+2. Generating S 
+3. 
+
+Introduction:
+1. Detailed Introduction:
+    a. Covid Introducrion
+    b. Contact Tracing Applications
+    c. What we did 
+
+2. Organisation:
+    a. What we did in th
+
+3. Related Work:
+    a. Discussion about (What all did, and what we are doing differently) 
+    b. Proposed Method (Discussion of the scheme, maths etc)
+    c. f
+
+4. Algorithm
+
+5. Results
+    a. Performance Envaluation
+    b. Conclusion
+
+et al
